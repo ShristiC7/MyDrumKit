@@ -2,9 +2,11 @@ for(var n=0; n<document.querySelectorAll(".drum").length; n++){
     document.querySelectorAll("button")[n].addEventListener("click", function(){
         var btninnerHtml = this.innerHTML;
         audioadd(btninnerHtml);
+         addanimation(btninnerHtml);
     });
     document.addEventListener("keydown", function(event){
         audioadd(event.key);
+         addanimation(event.key);
     });
 }
 
@@ -39,4 +41,11 @@ function audioadd(key){
     audio7.play();
     default: console.log(key);
     }
+}
+function addanimation(currentkey){
+    var activebtn= document.querySelector("."+currentkey);
+    activebtn.classList.add("pressed");
+    setTimeout (function(){
+        activebtn.classList.remove("pressed");
+    }, 100);
 }
